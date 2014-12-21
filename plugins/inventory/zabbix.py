@@ -71,6 +71,11 @@ class ZabbixInventory(object):
             'hosts': []
         }
 
+    def hostvarsstub(self):
+        return {
+            'hostvars': {}
+        }
+
     def get_host(self, api, name):
         data = {}
         return data
@@ -80,6 +85,7 @@ class ZabbixInventory(object):
 
         data = {}
         data[self.defaultgroup] = self.hoststub()
+        data['_meta'] = self.hostvarsstub()
 
         for host in hostsData:
             hostname = host['name']
